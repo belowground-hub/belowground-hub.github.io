@@ -54,7 +54,7 @@ To see your changes in real-time before deploying:
 
 ---
 
-## 🔄 How to Update & Sync
+## How to Update & Sync
 
 If you need to pull the latest changes from other contributors:
 
@@ -63,7 +63,7 @@ If you need to pull the latest changes from other contributors:
 
 ---
 
-## 📦 Building for Deployment
+## Building for Deployment
 
 Since this site is hosted on GitHub Pages, we must convert the Flask templates into static HTML files before pushing.
 
@@ -82,7 +82,7 @@ Since this site is hosted on GitHub Pages, we must convert the Flask templates i
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 - `/static`: Assets like `styles.css` and `upload.js`.
 - `/templates`: Jinja2 templates (`base.html` for layout, `index.html` for content).
 - `app.py`: Python script for the local development server.

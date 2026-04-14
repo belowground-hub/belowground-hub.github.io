@@ -1,5 +1,5 @@
 // REPLACE THIS URL WITH YOUR NEW WEB APP URL
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTLBPHegkWFRDJAKTdDYXdYAm3DbA4M9Vdg6dcY8ZT_K_F2xlLCEvXfJrRfPLmigxD/exec";
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTLBPHegkWFRDJAKTdDYXdYAm3DbA4M9Vdg6dcY8ZT_K_F2xlLCEvXfJrRfPLmigxD/exec";
 
 async function handleUpload() {
     const fileInput = document.getElementById('fileInput');
