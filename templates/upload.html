@@ -4,36 +4,81 @@
     <p>Help keep the board updated. Please provide the show details.</p>
     
     <div style="background: var(--accent); padding: 2rem; border: 2px dashed var(--border); margin-bottom: 2rem; max-width: 500px;">
-        <label style="display:block; margin-bottom: 0.5rem; font-weight:bold;">SHOW DATE:</label>
-        <input type="date" id="showDate" style="width:100%; padding:10px; margin-bottom:1.5rem; font-family:inherit;">
-
-        <label style="display:block; margin-bottom: 0.5rem; font-weight:bold;">VENUE:</label>
-        <select id="venueSelect" style="width:100%; padding:10px; margin-bottom:1rem; font-family:inherit;">
-            <option value="">-- Select a Venue --</option>
-            <option value="Casket">Casket</option>
-            <option value="Dungeon">Dungeon</option>
-            <option value="Nest">Nest</option>
-            <option value="Sun House">Sun House</option>
-            <option value="Milky Way Lounge">Milky Way Lounge</option>
-            <option value="Hill Club">Hill Club</option>
-            <option value="Vibe">Vibe</option>
-            <option value="OTHER">Other / New Venue</option>
-        </select>
         
-        <input type="text" id="customVenue" placeholder="Type Venue Name..." style="display:none; width:100%; padding:10px; margin-bottom:1.5rem; font-family:inherit;">
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                
+        <form id="uploadForm" action="https://script.google.com/macros/s/AKfycbwCzCIo5B1isazCkBT1MxfMDZSxa8ypJJPKpabXg27HnQxPP5Yp9UmEFyen8UwnOJhjqg/exec" method="POST" target="hidden_iframe">
+            
+            <input type="hidden" name="base64" id="base64Data">
+            <input type="hidden" name="mimeType" id="mimeTypeData">
+            <input type="hidden" name="fileName" id="fileNameData">
+            <input type="hidden" name="venue" id="venueData">
 
-        <label style="display:block; margin-bottom: 0.5rem; font-weight:bold;">FLYER PHOTO:</label>
-        <input type="file" id="fileInput" accept="image/*" style="margin-bottom:1.5rem; display: block; font-family: inherit;">
-        
-        <button onclick="handleUpload()" class="btn" style="width:100%;">Push to Drive</button>
+            <label style="display:block; margin-bottom: 0.5rem; font-weight:bold;">SHOW DATE:</label>
+            <input type="date" id="showDate" style="width:100%; padding:10px; margin-bottom:1.5rem; font-family:inherit;" required>
+
+            <label style="display:block; margin-bottom: 0.5rem; font-weight:bold;">VENUE:</label>
+            <select id="venueSelect" style="width:100%; padding:10px; margin-bottom:1rem; font-family:inherit;" required>
+                <option value="">-- Select a Venue --</option>
+                <option value="Casket">Casket</option>
+                <option value="Dungeon">Dungeon</option>
+                <option value="Nest">Nest</option>
+                <option value="Sun House">Sun House</option>
+                <option value="Milky Way Lounge">Milky Way Lounge</option>
+                <option value="Hill Club">Hill Club</option>
+                <option value="Vibe">Vibe</option>
+                <option value="OTHER">Other / New Venue</option>
+            </select>
+            
+            <input type="text" id="customVenue" placeholder="Type Venue Name..." style="display:none; width:100%; padding:10px; margin-bottom:1.5rem; font-family:inherit;">
+
+            <label style="display:block; margin-bottom: 0.5rem; font-weight:bold;">FLYER PHOTO:</label>
+            <input type="file" id="fileInput" accept="image/*" style="margin-bottom:1.5rem; display: block; font-family: inherit;" required>
+            
+            <button type="button" id="submitBtn" onclick="processAndSubmit()" class="btn" style="width:100%;">Push to Drive</button>
+        </form>
     </div>
 
     <script>
-        // Show/Hide custom venue box
+        // Custom Venue Logic
         document.getElementById('venueSelect').addEventListener('change', function() {
             const customInput = document.getElementById('customVenue');
             customInput.style.display = (this.value === 'OTHER') ? 'block' : 'none';
         });
+
+        function processAndSubmit() {
+            const dateInput = document.getElementById('showDate').value;
+            const vSelect = document.getElementById('venueSelect').value;
+            const fileInput = document.getElementById('fileInput');
+
+            if (!dateInput || !vSelect || !fileInput.files.length) {
+                return alert("Please fill out all fields.");
+            }
+
+            const venue = vSelect === 'OTHER' ? document.getElementById('customVenue').value : vSelect;
+            const file = fileInput.files[0];
+
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "UPLOADING...";
+            btn.disabled = true;
+
+            // Read image, convert to Base64 text, load it into hidden inputs, and submit
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('base64Data').value = e.target.result.split(',')[1];
+                document.getElementById('mimeTypeData').value = file.type;
+                document.getElementById('fileNameData').value = dateInput + " " + venue + ".jpg";
+                document.getElementById('venueData').value = venue;
+
+                document.getElementById('uploadForm').submit();
+
+                // Re-enable the button after 8 seconds
+                setTimeout(() => {
+                    btn.innerText = "Push to Drive";
+                    btn.disabled = false;
+                }, 8000);
+            };
+            reader.readAsDataURL(file);
+        }
     </script>
-    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
 {% endblock %}
