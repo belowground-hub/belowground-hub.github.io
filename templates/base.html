@@ -51,5 +51,25 @@
     </footer>
 
     <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+    <script>
+        // Makes dropdown menus work on mobile taps
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                // Only run this on mobile screen sizes
+                if (window.innerWidth <= 768) {
+                    const content = this.querySelector('.dropdown-content');
+                    
+                    // If it's already open, close it. Otherwise, open it.
+                    if (content.style.display === 'block') {
+                        content.style.display = 'none';
+                    } else {
+                        // Close any other open dropdowns first to keep it clean
+                        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                        content.style.display = 'block';
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
