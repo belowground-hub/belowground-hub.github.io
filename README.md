@@ -5,6 +5,8 @@ In other words, this website is built using Python (Flask) to make managing the 
 
 My goal is to make this introduction as easy to understand as possible, so anyone can get started! If you have zero programming experience, that's totally fine. I've added a list of resources down at the bottom to get you started and I'm hoping to add more (and more details) once I have a bit more time. 
 
+IF YOU HAVE ANY QUESTIONS, please let me know!
+
 ### HTML, CSS & JavaScript (The Front-End)
 These languages control how the website looks and feels in the browser.
 * **[Khan Academy Computer programming - JavaScript and the web](https://www.khanacademy.org/computing/computer-programming)**: This is actually what I used to learn Javascript/HTML/CSS years ago!
@@ -18,7 +20,7 @@ We use Python (specifically the Flask framework) to stitch our templates togethe
 ### Git & GitHub (Version Control)
 Git is how we save our work and collaborate without overwriting each other's changes.
 * **[GitHub's "Hello World" Tutorial](https://docs.github.com/en/get-started/quickstart/hello-world)**: A 10-minute read directly from GitHub that explains how repositories, branches, and commits work.
-* **[Learn Git Branching](https://learngitbranching.js.org/)**: A highly visual, interactive game that teaches you how Git works under the hood. Highly recommended if you are a visual learner!
+* **[Learn Git Branching](https://learngitbranching.js.org/)**: A highly visual, interactive game that teaches you how Git works under the hood.
 
 ---
 
@@ -27,7 +29,7 @@ You only need to do this once.
 Before you can edit the website, you need three pieces of software installed on your computer.
 
 ### 1. A Code Editor (VS Code)
-You need a program designed for writing code. We recommend **Visual Studio Code (VS Code)** because it's free, industry-standard, and easy to use.
+You need a program designed for writing code. I recommend **Visual Studio Code (VS Code)** because it's free, industry-standard, and I could give you the most help with it.
 * Download it here: [https://code.visualstudio.com/](https://code.visualstudio.com/)
 * Install it like any normal application.
 
@@ -47,7 +49,7 @@ Git is a version control system. It allows you to download our code, make a copy
 ### 1. Get the Code/Clone the Respository
 Open your computer's terminal (Command Prompt/PowerShell on Windows, or Terminal on Mac/Linux) and download the repository:
 ```bash
-git clone [https://github.com/belowground-hub/belowground-hub.github.io.git](https://github.com/belowground-hub/belowground-hub.github.io.git)
+git clone https://github.com/belowground-hub/belowground-hub.github.io.git
 ```
 
 ### 2. Create a Virtual Environment
@@ -67,7 +69,7 @@ Turn the environment on and install the required Python packages (`requirements.
     source venv/bin/activate
     pip install -r requirements.txt
     ```
-
+```
 ---
 
 ## How to Run & Develop
