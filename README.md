@@ -61,14 +61,14 @@ is creates an isolated bubble on your computer so the project's tools don't inte
 Turn the environment on and install the required Python packages (`requirements.txt`).
 * **Windows:**
 ```bash
-    venv\Scripts\activate
-    pip install -r requirements.txt
-    ```
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
 * **Mac/Linux:**
 ```bash
-    source venv/bin/activate
-    pip install -r requirements.txt
-    ```
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 ---
 
