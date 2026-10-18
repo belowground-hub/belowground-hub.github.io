@@ -1,7 +1,7 @@
 # belowground.github.io
 
 This site uses a **Flask-to-Static** workflow and is hosted on **GitHub Pages**.
-In other words, this website is built using Python (Flask) to make managing the layout easy, but it gets converted into a basic static website before it goes live on GitHub Pages. Instead of a traditional "back end", we use google apps scrips and google drive to do a lot of the storage and heavy lifting. 
+In other words, this website is built using Python (Flask) to make managing the layout easy, but it gets converted into a basic static website before it goes live on GitHub Pages. Instead of a traditional "back end", we use google apps scripts and google drive to do a lot of the storage and heavy lifting. 
 
 My goal is to make this introduction as easy to understand as possible, so anyone can get started! If you have zero programming experience, that's totally fine. I've added a list of resources down at the bottom to get you started and I'm hoping to add more (and more details) once I have a bit more time. 
 
